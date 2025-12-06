@@ -5,24 +5,26 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Libros libro1 = new Libros ("LIB-001", "Gabriel García Márquez", 2020);
-        Libros libro2 = new Libros("LIB-002", "Mario Vargas Llosa", 2015);
+        System.out.println("=== CONTROL DE INVENTARIO ===");
 
-        System.out.println("=== LIBROS DISPONIBLES ===");
-        System.out.println("1. " + libro1.getIdentificador() + " - " + libro1.getAutor());
-        System.out.println("2. " + libro2.getIdentificador() + " - " + libro2.getAutor());
+        Control producto1 = new Control("PROD-001", 50, 60);
 
-        System.out.print("\n¿Qué libro quieres reservar? (1 o 2): ");
-        int opcion = scanner.nextInt();
+        System.out.println("\nENTRADA DE MERCANCÍA");
 
-        if (opcion == 1) {
-            libro1.reservar();
-        } else if (opcion == 2) {
-            libro2.reservar();
-        } else {
-            System.out.println("Opción no válida");
-        }
+        System.out.println("\nProducto: Jabón");
+        System.out.println("Stock actual:" + producto1.getStockstock());
+        System.out.print("Ingrese la cantidad a agregar: ");
+        int cantidad1 = scanner.nextInt();
+
+        System.out.println("Entrada de: " + cantidad1 + " unidades:");
+        producto1.incrementarStock(cantidad1);
+
+
+        System.out.println("\nCÁLCULO DEL VALOR TOTAL DEL STOCK ");
+
+        double valorTotal1 = producto1.calcularValorTotalStock();
+
+
+        System.out.println("Valor total del stock - Producto 1: $" + String.format("%.2f", valorTotal1));
     }
 }
-
-
